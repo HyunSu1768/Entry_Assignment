@@ -1,4 +1,11 @@
 package com.entry
 
-class EntryApplication {
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+
+@SpringBootApplication
+class EntryApplication
+
+fun main(args: Array<String>){
+    runApplication<EntryApplication>(*args)
 }

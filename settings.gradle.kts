@@ -6,3 +6,7 @@ pluginManagement {
 	}
 }
 rootProject.name = "entry"
+include("entry-core")
+include("entry-persistence")
+include("entry-presentation")
+include("entry-infrastructure")
