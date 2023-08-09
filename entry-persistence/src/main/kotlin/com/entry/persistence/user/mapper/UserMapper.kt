@@ -17,7 +17,7 @@ class UserMapper {
 
     fun toEntity(userJpaEntity: UserJpaEntity): User {
         return User(
-            uuid = userJpaEntity.uuid!!,
+            uuid = userJpaEntity.id!!,
             email = userJpaEntity.email,
             nickname = userJpaEntity.nickname
         )
