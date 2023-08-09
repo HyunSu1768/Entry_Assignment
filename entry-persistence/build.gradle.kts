@@ -1,6 +1,6 @@
 dependencies {
 
-    // impl module
+    // impl project
     implementation(project(":entry-core"))
     implementation(project(":entry-common"))
 

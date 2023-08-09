@@ -5,10 +5,11 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
+
 rootProject.name = "entry"
+
 include("entry-core")
 include("entry-persistence")
 include("entry-presentation")
 include("entry-infrastructure")
-include("entry-common")
 include("entry-common")
