@@ -12,5 +12,13 @@ spring:
       hibernate:
         show_sql: false
         format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
   profiles:
     include: oauth
+
+jwt:
+  secretKey: ${JWT_SECRET_KEY:asdjfkasdhfjkashdfkashdfkahsdjkfahskdf}
+  accessExpiredExp: ${JWT_ACCESS_EXP:1800000}
+  refreshExpiredExp: ${JWT_REFRESH_EXP:432000000}
+  header: ${JWT_HEADER:Authorization}
+  prefix: ${JWT_PREFIX:Bearer}
