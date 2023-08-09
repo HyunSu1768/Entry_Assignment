@@ -1,22 +1,16 @@
 package com.entry.persistence.user.entity
 
-import org.hibernate.annotations.GenericGenerator
+import com.entry.persistence.BaseUUIDEntity
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
 
 @Entity(name = "tbl_user")
 class UserJpaEntity(
-
-    @Id @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    val uuid: UUID?,
+    id: UUID?,
 
     @Column(name = "email", nullable = false)
     val email: String,
@@ -24,7 +18,7 @@ class UserJpaEntity(
     @Column(name = "nickname", nullable = false)
     val nickname: String
 
-): UserDetails {
+): BaseUUIDEntity(id) ,UserDetails {
 
     fun update(nickname: String){
 

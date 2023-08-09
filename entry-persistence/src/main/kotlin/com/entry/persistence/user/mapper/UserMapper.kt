@@ -9,7 +9,7 @@ class UserMapper {
 
     fun toDomain(user: User): UserJpaEntity{
         return UserJpaEntity(
-            uuid = user.uuid,
+            id = user.uuid,
             email = user.email,
             nickname = user.nickname
         )
