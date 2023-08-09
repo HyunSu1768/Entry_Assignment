@@ -5,5 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 import java.util.Optional
 
 interface UserRepository: JpaRepository<UserJpaEntity, Long>{
+
     fun existsByEmail(email: String): Boolean
+
+    fun findByEmail(email: String?): Optional<UserJpaEntity>
+
 }
