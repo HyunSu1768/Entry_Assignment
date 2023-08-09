@@ -2,6 +2,7 @@ package com.entry.feed
 
 import com.entry.common.WebAdapter
 import com.entry.feed.dto.request.FeedRequest
+import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.port.`in`.SaveFeedUseCase
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,8 +17,13 @@ class FeedWebAdapter(
 ) {
 
     @PostMapping
-    fun addFeed(@RequestBody feedRequest: FeedRequest){
-        saveFeedUseCase.saveFeed(feedRequest)
+    fun addFeed(@RequestBody feedWebRequest: FeedWebRequest){
+        saveFeedUseCase.saveFeed(
+            FeedRequest(
+                feedWebRequest.title,
+                feedWebRequest.content
+            )
+        )
     }
 
 }
