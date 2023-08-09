@@ -29,7 +29,7 @@ class JwtAdapter(
         return Jwts.builder()
             .setSubject(email)
             .setIssuedAt(now)
-            .setExpiration(Date(now.getTime() + 36000L))
+            .setExpiration(Date(now.getTime() + jwtProperties.accessExpiredExp * 1000L))
             .signWith(SignatureAlgorithm.HS256, jwtProperties.secretKey)
             .compact()
     }
