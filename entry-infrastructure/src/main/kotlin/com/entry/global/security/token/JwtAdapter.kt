@@ -3,6 +3,8 @@ package com.entry.global.security.token
 import com.entry.auth.dto.response.TokenResponse
 import com.entry.auth.port.out.GenerateJwtPort
 import com.entry.auth.port.out.JwtExpiredCheckPort
+import com.entry.common.error.BusinessException
+import com.entry.common.error.ErrorCode
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.JwtException
 import org.springframework.stereotype.Component
@@ -28,7 +30,7 @@ class JwtAdapter(
             .setSubject(email)
             .setIssuedAt(now)
             .setExpiration(Date(now.getTime() + 36000L))
-            .signWith(SignatureAlgorithm.HS256, "ajsdklfajskdlasdjfklajsdlkfajsdklffajsdlfajsdlfjaksldfjalsdfjalsdfjkl")
+            .signWith(SignatureAlgorithm.HS256, jwtProperties.secretKey)
             .compact()
     }
 
@@ -46,7 +48,7 @@ class JwtAdapter(
         try {
             return Jwts.parser().setSigningKey(jwtProperties.secretKey).parseClaimsJws(token).body
         } catch (e: JwtException){
-            throw RuntimeException()
+            throw BusinessException(ErrorCode.INVALID_TOKEN)
         }
     }
 }

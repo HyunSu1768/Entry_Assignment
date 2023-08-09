@@ -12,7 +12,7 @@ class JwtResolver(
 
         val bearerToken = request.getHeader(jwtProperties.header)
 
-        if(bearerToken.startsWith(jwtProperties.prefix) && bearerToken.length > jwtProperties.prefix.length+1){
+        if(bearerToken.startsWith(jwtProperties.prefix) && bearerToken.length > jwtProperties.prefix.length+1 && bearerToken != null){
             return bearerToken.substring(7)
         }
 

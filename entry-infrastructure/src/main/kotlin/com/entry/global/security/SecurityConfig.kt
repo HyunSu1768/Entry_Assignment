@@ -28,6 +28,8 @@ class SecurityConfig(
         return httpSecurity
             .csrf().disable()
             .authorizeRequests()
+            .antMatchers("/login/oauth2/code/naver").permitAll()
+            .antMatchers("/login/oauth2/code/kakao").permitAll()
             .anyRequest().permitAll()
             .and()
             .oauth2Login()
