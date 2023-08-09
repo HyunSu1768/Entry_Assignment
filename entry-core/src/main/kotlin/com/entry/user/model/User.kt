@@ -1,10 +1,12 @@
-package com.entry.auth.model
+package com.entry.user.model
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import java.util.UUID
 
 data class User(
+    val uuid: UUID = UUID(0,0),
     val email: String,
     val nickname: String
 ): UserDetails {
@@ -17,7 +19,7 @@ data class User(
     }
 
     override fun getUsername(): String {
-        return nickname
+        return email
     }
 
     override fun isAccountNonExpired(): Boolean {

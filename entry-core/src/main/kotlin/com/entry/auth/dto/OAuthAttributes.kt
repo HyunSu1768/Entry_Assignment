@@ -1,6 +1,6 @@
 package com.entry.auth.dto
 
-import com.entry.auth.model.User
+import com.entry.user.model.User
 
 
 class OAuthAttributes(

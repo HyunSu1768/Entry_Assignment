@@ -1,28 +1,33 @@
 package com.entry.persistence.user.entity
 
+import org.hibernate.annotations.GenericGenerator
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
-import java.util.Collections
-import javax.persistence.*
+import java.util.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity(name = "tbl_user")
 class UserJpaEntity(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    @Id @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
+    val uuid: UUID?,
 
     @Column(name = "email", nullable = false)
     val email: String,
 
     @Column(name = "nickname", nullable = false)
-    var nickname: String
+    val nickname: String
 
 ): UserDetails {
 
     fun update(nickname: String){
-        this.nickname = nickname
+
     }
 
     override fun getAuthorities(): MutableCollection<GrantedAuthority> {
