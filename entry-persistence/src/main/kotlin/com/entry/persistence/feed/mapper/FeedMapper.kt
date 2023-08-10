@@ -27,7 +27,7 @@ class FeedMapper(
         val userEntity = userMapper.toEntity(feedJpaEntity.user)
 
         return Feed(
-            uuid = userEntity.uuid,
+            uuid = feedJpaEntity.id,
             title = feedJpaEntity.title,
             content = feedJpaEntity.content,
             user = userEntity
