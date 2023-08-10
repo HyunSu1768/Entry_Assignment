@@ -1,6 +1,6 @@
 package com.entry.global.security.principle
 
-import com.entry.auth.port.out.FindUserPort
+import com.entry.user.port.out.FindUserPort
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Component

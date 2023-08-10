@@ -2,7 +2,7 @@ package com.entry.auth.service
 
 import com.entry.auth.dto.OAuthAttributes
 import com.entry.user.model.User
-import com.entry.auth.port.out.UserSaveOrUpdatePort
+import com.entry.user.port.out.UserSaveOrUpdatePort
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
