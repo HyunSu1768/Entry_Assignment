@@ -38,7 +38,7 @@ class JwtAdapter(
         val body = getBody(token)
 
         if(body.expiration.before(Date())){
-            throw RuntimeException()
+            throw BusinessException(ErrorCode.EXPIRED_TOKEN)
         } else{
             return body.subject
         }
