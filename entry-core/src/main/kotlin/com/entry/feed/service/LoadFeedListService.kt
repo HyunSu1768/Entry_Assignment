@@ -9,8 +9,10 @@ import com.entry.feed.port.out.LoadFeedListPort
 class LoadFeedListService(
     private val loadFeedListPort: LoadFeedListPort
 ): LoadFeedListUseCase {
+
     override fun load(): FeedListResponse {
         val feedList = loadFeedListPort.load()
         return FeedListResponse(feedList)
     }
+
 }

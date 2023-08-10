@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component
 class CustomUserDetailService(
     val findUserPort: FindUserPort
 ): UserDetailsService {
+
     override fun loadUserByUsername(username: String?): UserDetails {
         return findUserPort.findUserByEmail(username)
     }
+
 }

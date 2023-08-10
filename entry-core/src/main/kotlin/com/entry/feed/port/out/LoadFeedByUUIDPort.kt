@@ -4,5 +4,6 @@ import com.entry.feed.model.Feed
 import java.util.UUID
 
 interface LoadFeedByUUIDPort {
+
     fun load(uuid: UUID): Feed
 }

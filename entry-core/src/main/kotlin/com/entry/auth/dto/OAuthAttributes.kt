@@ -9,6 +9,7 @@ class OAuthAttributes(
     val name: String,
     val email: String,
 ) {
+
     companion object {
         fun of(
             socialName: String,
@@ -20,7 +21,6 @@ class OAuthAttributes(
                 else -> null
             }
         }
-
 
         fun ofKakao(
             userNameAttributeName: String,
@@ -55,6 +55,7 @@ class OAuthAttributes(
 
         }
     }
+
     fun toEntity(): User {
         return User(
             email = email,

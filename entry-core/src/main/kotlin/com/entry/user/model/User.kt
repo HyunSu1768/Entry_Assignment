@@ -10,6 +10,7 @@ data class User(
     val email: String,
     val nickname: String
 ): UserDetails {
+
     override fun getAuthorities(): MutableCollection<GrantedAuthority> {
         return arrayListOf(SimpleGrantedAuthority("ROLE_TEST"))
     }

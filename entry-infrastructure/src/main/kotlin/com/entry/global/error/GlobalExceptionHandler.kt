@@ -26,5 +26,4 @@ class GlobalExceptionHandler {
 
         return ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR)
     }
-
 }

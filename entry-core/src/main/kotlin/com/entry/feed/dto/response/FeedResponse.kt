@@ -19,6 +19,5 @@ data class FeedResponse(
                 feed.user.nickname
             )
         }
-
     }
 }

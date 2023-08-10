@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component
 class OAuthUserService(
     val saveOrUpdatePort: UserSaveOrUpdatePort
 ): OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+
     override fun loadUser(userRequest: OAuth2UserRequest?): OAuth2User {
+
         val service: OAuth2UserService<OAuth2UserRequest, OAuth2User> = DefaultOAuth2UserService()
         val oAuth2User = service.loadUser(userRequest)
 
@@ -34,7 +36,5 @@ class OAuthUserService(
             attributes!!.attributes,
             attributes.nameAttributesKey
         )
-
     }
-
 }

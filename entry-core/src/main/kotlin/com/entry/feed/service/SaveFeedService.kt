@@ -12,12 +12,16 @@ class SaveFeedService(
     val saveFeedPort: SaveFeedPort,
     val loadCurrentUserPort: LoadCurrentUserPort
 ): SaveFeedUseCase {
+
     override fun saveFeed(request: FeedRequest) {
+
         val feed = Feed(
             title = request.title,
             content = request.content,
             user = loadCurrentUserPort.load()
         )
+
         saveFeedPort.save(feed)
     }
+
 }

@@ -20,10 +20,6 @@ class UserJpaEntity(
 
 ): BaseUUIDEntity(id) ,UserDetails {
 
-    fun update(nickname: String){
-
-    }
-
     override fun getAuthorities(): MutableCollection<GrantedAuthority> {
         return arrayListOf(SimpleGrantedAuthority("ROLE_TEST"))
     }
