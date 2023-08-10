@@ -2,11 +2,11 @@ package com.entry.common.error
 
 import java.time.LocalDateTime
 
-class ErrorResponse(
-    private val message: String?,
-    private val status: Int?,
-    private val timestamp: LocalDateTime?,
-    private val description: String?
+data class ErrorResponse(
+    val message: String?,
+    val status: Int?,
+    val timestamp: LocalDateTime?,
+    val description: String?
 ) {
 
     companion object{

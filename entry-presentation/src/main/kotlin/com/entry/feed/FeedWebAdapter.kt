@@ -6,11 +6,7 @@ import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.dto.response.FeedListResponse
 import com.entry.feed.port.`in`.LoadFeedListUseCase
 import com.entry.feed.port.`in`.SaveFeedUseCase
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/feed")
