@@ -11,6 +11,9 @@ enum class ErrorCode(
 
 
     // Interval Server Error
-    INTERVAL_SERVER_ERROR(500, "Interval Server Error")
+    INTERVAL_SERVER_ERROR(500, "Interval Server Error"),
+
+    // 404 Not Found
+    FEED_NOT_FOUND(404, "Feed Not Found")
 
 }
