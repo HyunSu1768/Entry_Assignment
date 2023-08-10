@@ -4,5 +4,5 @@ import com.entry.user.model.User
 
 interface LoadCurrentUserPort {
 
-    fun load(): User
+    fun loadCurrentUser(): User
 }

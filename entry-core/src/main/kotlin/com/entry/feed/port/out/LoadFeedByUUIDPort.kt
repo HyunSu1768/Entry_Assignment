@@ -5,5 +5,5 @@ import java.util.UUID
 
 interface LoadFeedByUUIDPort {
 
-    fun load(uuid: UUID): Feed
+    fun loadFeed(uuid: UUID): Feed
 }

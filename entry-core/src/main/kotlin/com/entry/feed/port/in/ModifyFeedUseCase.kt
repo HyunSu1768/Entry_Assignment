@@ -5,5 +5,5 @@ import java.util.UUID
 
 interface ModifyFeedUseCase {
 
-    fun modify(feedModifyRequest: FeedModifyRequest, id: UUID)
+    fun modifyFeed(feedModifyRequest: FeedModifyRequest, id: UUID)
 }

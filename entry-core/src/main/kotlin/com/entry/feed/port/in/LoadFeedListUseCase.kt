@@ -4,5 +4,5 @@ import com.entry.feed.dto.response.FeedListResponse
 
 interface LoadFeedListUseCase {
 
-    fun load(): FeedListResponse
+    fun loadFeed(): FeedListResponse
 }

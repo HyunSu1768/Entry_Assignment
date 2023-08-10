@@ -10,8 +10,8 @@ class LoadFeedListService(
     private val loadFeedListPort: LoadFeedListPort
 ): LoadFeedListUseCase {
 
-    override fun load(): FeedListResponse {
-        val feedList = loadFeedListPort.load()
+    override fun loadFeed(): FeedListResponse {
+        val feedList = loadFeedListPort.loadFeedList()
         return FeedListResponse(feedList)
     }
 

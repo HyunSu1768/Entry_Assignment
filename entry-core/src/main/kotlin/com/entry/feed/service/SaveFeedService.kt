@@ -18,10 +18,10 @@ class SaveFeedService(
         val feed = Feed(
             title = request.title,
             content = request.content,
-            user = loadCurrentUserPort.load()
+            user = loadCurrentUserPort.loadCurrentUser()
         )
 
-        saveFeedPort.save(feed)
+        saveFeedPort.saveFeed(feed)
     }
 
 }

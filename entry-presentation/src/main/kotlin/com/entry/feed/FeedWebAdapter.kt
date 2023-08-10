@@ -33,12 +33,12 @@ class FeedWebAdapter(
 
     @GetMapping("/list")
     fun findFeedList(): FeedListResponse{
-        return loadFeedListUseCase.load()
+        return loadFeedListUseCase.loadFeed()
     }
 
     @PutMapping("/{uuid}")
     fun modifyFeed(@PathVariable uuid: UUID, @RequestBody feedModifyWebRequest: FeedModifyWebRequest){
-        modifyFeedUseCase.modify(
+        modifyFeedUseCase.modifyFeed(
             FeedModifyRequest(
                 feedModifyWebRequest.title,
                 feedModifyWebRequest.content

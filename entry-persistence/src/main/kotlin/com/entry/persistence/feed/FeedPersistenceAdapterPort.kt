@@ -20,16 +20,16 @@ class FeedPersistenceAdapterPort(
     val feedMapper: FeedMapper
 ): SaveFeedPort, LoadFeedListPort, LoadFeedByUUIDPort {
 
-    override fun save(feed: Feed) {
+    override fun saveFeed(feed: Feed) {
         val feedJpaEntity = feedMapper.toDomain(feed)
         feedRepository.save(feedJpaEntity)
     }
 
-    override fun load(): MutableList<FeedResponse> {
+    override fun loadFeedList(): MutableList<FeedResponse> {
         return feedRepository.findAll().stream().map { it -> FeedResponse.of(feedMapper.toEntity(it)) }.toList()
     }
 
-    override fun load(uuid: UUID): Feed {
+    override fun loadFeed(uuid: UUID): Feed {
         return feedMapper.toEntity(feedRepository.findById(uuid).orElseThrow{ BusinessException(ErrorCode.FEED_NOT_FOUND)})
     }
 

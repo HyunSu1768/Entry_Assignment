@@ -13,11 +13,11 @@ class ModifyFeedService(
     private val saveFeedPort: SaveFeedPort
     ): ModifyFeedUseCase{
 
-    override fun modify(feedModifyRequest: FeedModifyRequest, id: UUID) {
+    override fun modifyFeed(feedModifyRequest: FeedModifyRequest, id: UUID) {
 
-        val feed = loadFeedByUUIDPort.load(id)
+        val feed = loadFeedByUUIDPort.loadFeed(id)
 
-        saveFeedPort.save(
+        saveFeedPort.saveFeed(
             feed.copy(
                 title = feedModifyRequest.title,
                 content = feedModifyRequest.content
