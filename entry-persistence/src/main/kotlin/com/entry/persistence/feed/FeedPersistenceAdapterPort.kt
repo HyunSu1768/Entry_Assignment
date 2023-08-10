@@ -7,6 +7,7 @@ import com.entry.feed.dto.response.FeedResponse
 import com.entry.feed.model.Feed
 import com.entry.feed.port.out.LoadFeedByUUIDPort
 import com.entry.feed.port.out.LoadFeedListPort
+import com.entry.feed.port.out.RemoveFeedPort
 import com.entry.feed.port.out.SaveFeedPort
 import com.entry.persistence.feed.mapper.FeedMapper
 import com.entry.persistence.feed.repository.FeedRepository
@@ -18,7 +19,7 @@ import java.util.*
 class FeedPersistenceAdapterPort(
     val feedRepository: FeedRepository,
     val feedMapper: FeedMapper
-): SaveFeedPort, LoadFeedListPort, LoadFeedByUUIDPort {
+): SaveFeedPort, LoadFeedListPort, LoadFeedByUUIDPort, RemoveFeedPort {
 
     override fun saveFeed(feed: Feed) {
         val feedJpaEntity = feedMapper.toDomain(feed)
@@ -32,5 +33,7 @@ class FeedPersistenceAdapterPort(
     override fun loadFeed(uuid: UUID): Feed {
         return feedMapper.toEntity(feedRepository.findById(uuid).orElseThrow{ BusinessException(ErrorCode.FEED_NOT_FOUND)})
     }
+
+    override fun removeFeed(uuid: UUID) = feedRepository.deleteById(uuid)
 
 }

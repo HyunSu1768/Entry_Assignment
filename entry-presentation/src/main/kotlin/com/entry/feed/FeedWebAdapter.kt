@@ -8,6 +8,7 @@ import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.dto.response.FeedListResponse
 import com.entry.feed.port.`in`.LoadFeedListUseCase
 import com.entry.feed.port.`in`.ModifyFeedUseCase
+import com.entry.feed.port.`in`.RemoveFeedUseCase
 import com.entry.feed.port.`in`.SaveFeedUseCase
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
@@ -18,7 +19,8 @@ import java.util.UUID
 class FeedWebAdapter(
     private val saveFeedUseCase: SaveFeedUseCase,
     private val loadFeedListUseCase: LoadFeedListUseCase,
-    private val modifyFeedUseCase: ModifyFeedUseCase
+    private val modifyFeedUseCase: ModifyFeedUseCase,
+    private val removeFeedUseCase: RemoveFeedUseCase
 ) {
 
     @PostMapping
@@ -36,14 +38,19 @@ class FeedWebAdapter(
         return loadFeedListUseCase.loadFeed()
     }
 
-    @PutMapping("/{uuid}")
-    fun modifyFeed(@PathVariable uuid: UUID, @RequestBody feedModifyWebRequest: FeedModifyWebRequest){
+    @PutMapping("/{feedId}")
+    fun modifyFeed(@PathVariable feedId: UUID, @RequestBody feedModifyWebRequest: FeedModifyWebRequest){
         modifyFeedUseCase.modifyFeed(
             FeedModifyRequest(
                 feedModifyWebRequest.title,
                 feedModifyWebRequest.content
-            ), uuid
+            ), feedId
         )
+    }
+
+    @DeleteMapping("/{feedId}")
+    fun deleteFeed(@PathVariable feedId: UUID){
+        removeFeedUseCase.removeFeed(feedId)
     }
 
 }
