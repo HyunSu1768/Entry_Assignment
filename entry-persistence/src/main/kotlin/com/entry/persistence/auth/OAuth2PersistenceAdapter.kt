@@ -9,13 +9,19 @@ import com.entry.persistence.user.repository.UserRepository
 @PersistenceAdapter
 class OAuth2PersistenceAdapter(
     val userRepository: UserRepository,
-    val userMapper: UserMapper
+    val userMapper: UserMapper,
 ): UserSaveOrUpdatePort {
 
     override fun saveOrUpdate(user: User) {
         val userJpaEntity = userMapper.toDomain(user)
         if(userRepository.existsByEmail(user.email)){
-            userJpaEntity.update(user.nickname)
+            userRepository.save(
+                userMapper.toDomain(
+                    user.copy(
+                        nickname = user.nickname
+                    )
+                )
+            )
         }
         else{
             userRepository.save(userJpaEntity)

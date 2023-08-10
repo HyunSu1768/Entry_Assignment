@@ -18,7 +18,7 @@ class UserJpaEntity(
     @Column(name = "nickname", nullable = false)
     val nickname: String
 
-): BaseUUIDEntity(id) ,UserDetails {
+): BaseUUIDEntity(id), UserDetails {
 
     override fun getAuthorities(): MutableCollection<GrantedAuthority> {
         return arrayListOf(SimpleGrantedAuthority("ROLE_TEST"))
