@@ -13,19 +13,21 @@ class UserPersistenceAdapter(
     val userRepository: UserRepository,
     val userMapper: UserMapper
 ): FindUserPort, LoadCurrentUserPort {
+
     override fun findUserByEmail(email: String?): User {
 
         val user = userRepository.findByEmail(email)
             .orElseThrow()
 
         return userMapper.toEntity(user)
-
     }
 
     override fun load(): User {
+
         val userEmail = SecurityContextHolder.getContext().authentication.name
         val userJpaEntity = userRepository.findByEmail(userEmail)
             .orElseThrow()
+
         return userMapper.toEntity(userJpaEntity)
     }
 
