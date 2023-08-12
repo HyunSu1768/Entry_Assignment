@@ -18,6 +18,9 @@ dependencies {
     // validation
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    //crolling
+    implementation ("org.jsoup:jsoup:1.14.2")
+
 }
 
 tasks.bootJar {

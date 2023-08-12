@@ -27,11 +27,11 @@ class FeedPersistenceAdapterPort(
     }
 
     override fun loadFeedList(): MutableList<FeedResponse> {
-        return feedRepository.findAll().stream().map { it -> FeedResponse.of(feedMapper.toEntity(it)) }.toList()
+        return feedRepository.findAll().stream().map { it -> FeedResponse.of(feedMapper.toDomain(it)) }.toList()
     }
 
     override fun loadFeed(uuid: UUID): Feed {
-        return feedMapper.toEntity(feedRepository.findById(uuid).orElseThrow{ BusinessException(ErrorCode.FEED_NOT_FOUND)})
+        return feedMapper.toDomain(feedRepository.findById(uuid).orElseThrow{ BusinessException(ErrorCode.FEED_NOT_FOUND)})
     }
 
     override fun removeFeed(uuid: UUID) = feedRepository.deleteById(uuid)
