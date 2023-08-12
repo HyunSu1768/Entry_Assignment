@@ -25,4 +25,22 @@ class StockMapper {
         )
     }
 
+    fun toDomain(stockJpaEntity: StockJpaEntity): Stock{
+        return Stock(
+            id = stockJpaEntity.id,
+            stockName=stockJpaEntity.stockName,
+            currentPrice=stockJpaEntity.currentPrice,
+            fullDayFee=stockJpaEntity.fullDayFee,
+            fluctuationRate=stockJpaEntity.fluctuationRate,
+            faceValue=stockJpaEntity.faceValue,
+            marketCap=stockJpaEntity.marketCap,
+            listedSharesNumber=stockJpaEntity.listedSharesNumber,
+            foreignerRatio=stockJpaEntity.foreignerRatio,
+            tradingVolume=stockJpaEntity.tradingVolume,
+            per=stockJpaEntity.per,
+            roe=stockJpaEntity.roe,
+            discussionRoom=stockJpaEntity.discussionRoom
+        )
+    }
+
 }

@@ -1,9 +1,8 @@
 package com.entry.thirdparty.stock
 
-import com.entry.persistence.stock.entity.StockJpaEntity
 import com.entry.stock.model.Stock
 import com.entry.stock.port.out.SaveStockPort
-import com.entry.stock.port.out.StockSaveOrUpdatePort
+import com.entry.stock.port.out.SaveOrUpdateStockPort
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -11,20 +10,20 @@ import org.jsoup.select.Elements
 import org.springframework.stereotype.Component
 
 @Component
-class StockAdapter(
+class AdapterStock(
     val saveStockPort: SaveStockPort
-): StockSaveOrUpdatePort {
+): SaveOrUpdateStockPort {
     override fun saveOrUpdate() {
 
         val stockList:String = "https://finance.naver.com/sise/sise_market_sum.nhn?&page=1"
         val conn = Jsoup.connect(stockList)
 
         val document = conn.get()
-        getStockList(document)
+        getStockListAndSave(document)
 
     }
 
-    private fun getStockList(document: Document) {
+    private fun getStockListAndSave(document: Document) {
         val stockTableBody: Elements = document.select("table.type_2 tbody tr")
 
         for(element: Element in stockTableBody){

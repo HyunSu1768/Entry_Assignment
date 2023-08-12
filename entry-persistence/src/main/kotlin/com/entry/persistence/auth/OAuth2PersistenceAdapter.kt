@@ -15,9 +15,12 @@ class OAuth2PersistenceAdapter(
     override fun saveOrUpdate(user: User) {
         val userJpaEntity = userMapper.toDomain(user)
         if(userRepository.existsByEmail(user.email)){
+            val curUser = userRepository.findByEmail(user.email)
+
             userRepository.save(
                 userMapper.toDomain(
                     user.copy(
+                        uuid = curUser.id,
                         nickname = user.nickname
                     )
                 )

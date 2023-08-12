@@ -1,5 +1,6 @@
 package com.entry.stock.port.out
 
-interface StockSaveOrUpdatePort {
+interface SaveOrUpdateStockPort {
+
     fun saveOrUpdate();
 }

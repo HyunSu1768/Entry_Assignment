@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails
 import java.util.UUID
 
 data class User(
-    val uuid: UUID = UUID(0,0),
+    val uuid: UUID? = UUID(0,0),
     val email: String,
     val nickname: String
 ): UserDetails {
