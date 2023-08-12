@@ -43,7 +43,7 @@ class StockAdapter(
                 else{
                     text = "https://finance.naver.com"+td.select(".center a").attr("href")
                     val href = td.select(".center a").attr("href")
-                    val regex = Regex("\\d+")
+                    val regex = Regex("\\d+") // 연속적으로 나타나는 숫자를 찾음
                     number = regex.find(href)?.value
                 }
                 datas.add(text)
