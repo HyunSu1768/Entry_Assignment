@@ -19,12 +19,14 @@ class JwtAdapter(
 ): GenerateJwtPort, JwtExpiredCheckPort {
 
     override fun generateToken(email: String): TokenResponse {
+
         return TokenResponse(
             generateAccessToken(email)
         )
     }
 
     private fun generateAccessToken(email: String): String{
+
         val now = Date()
         return Jwts.builder()
             .setSubject(email)
@@ -35,6 +37,7 @@ class JwtAdapter(
     }
 
     override fun getSubjectWithExpiredCheck(token: String): String {
+
         val body = getBody(token)
 
         if(body.expiration.before(Date())){
@@ -45,6 +48,7 @@ class JwtAdapter(
     }
 
     private fun getBody(token: String): Claims{
+
         try {
             return Jwts.parser().setSigningKey(jwtProperties.secretKey).parseClaimsJws(token).body
         } catch (e: JwtException){
