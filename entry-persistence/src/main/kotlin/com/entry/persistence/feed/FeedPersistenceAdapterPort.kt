@@ -11,6 +11,8 @@ import com.entry.feed.port.out.RemoveFeedPort
 import com.entry.feed.port.out.SaveFeedPort
 import com.entry.persistence.feed.mapper.FeedMapper
 import com.entry.persistence.feed.repository.FeedRepository
+import com.entry.persistence.stock.mapper.StockMapper
+import com.entry.stock.port.out.LoadStockPort
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
@@ -18,13 +20,9 @@ import java.util.*
 @PersistenceAdapter
 class FeedPersistenceAdapterPort(
     val feedRepository: FeedRepository,
-    val feedMapper: FeedMapper
+    val feedMapper: FeedMapper,
+    val loadStockPort: LoadStockPort
 ): SaveFeedPort, LoadFeedListPort, LoadFeedByUUIDPort, RemoveFeedPort {
-
-    override fun saveFeed(feed: Feed) {
-        val feedJpaEntity = feedMapper.toDomain(feed)
-        feedRepository.save(feedJpaEntity)
-    }
 
     override fun loadFeedList(): MutableList<FeedResponse> {
         return feedRepository.findAll().stream().map { it -> FeedResponse.of(feedMapper.toDomain(it)) }.toList()
@@ -36,4 +34,8 @@ class FeedPersistenceAdapterPort(
 
     override fun removeFeed(uuid: UUID) = feedRepository.deleteById(uuid)
 
+    override fun saveFeed(feed: Feed){
+
+        feedRepository.save(feedMapper.toEntity(feed))
+    }
 }

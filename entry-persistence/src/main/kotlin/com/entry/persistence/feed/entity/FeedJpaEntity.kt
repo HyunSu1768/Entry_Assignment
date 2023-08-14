@@ -1,6 +1,7 @@
 package com.entry.persistence.feed.entity
 
 import com.entry.persistence.BaseUUIDEntity
+import com.entry.persistence.stock.entity.StockJpaEntity
 import com.entry.persistence.user.entity.UserJpaEntity
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
@@ -17,6 +18,10 @@ class FeedJpaEntity(
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    val user: UserJpaEntity
+    val user: UserJpaEntity,
+
+    @ManyToOne
+    @JoinColumn(name = "stock_id")
+    val stock: StockJpaEntity
 
 ): BaseUUIDEntity(id)
