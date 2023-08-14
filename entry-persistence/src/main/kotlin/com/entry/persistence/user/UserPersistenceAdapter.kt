@@ -16,7 +16,7 @@ class UserPersistenceAdapter(
 
         val user = userRepository.findByEmail(email)
 
-        return userMapper.toEntity(user)
+        return userMapper.toDomain(user)
     }
 
 }

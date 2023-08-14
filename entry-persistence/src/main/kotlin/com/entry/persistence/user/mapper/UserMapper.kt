@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class UserMapper {
 
-    fun toDomain(user: User): UserJpaEntity{
+    fun toEntity(user: User): UserJpaEntity{
         return UserJpaEntity(
             id = user.uuid,
             email = user.email,
@@ -15,7 +15,7 @@ class UserMapper {
         )
     }
 
-    fun toEntity(userJpaEntity: UserJpaEntity): User {
+    fun toDomain(userJpaEntity: UserJpaEntity): User {
         return User(
             uuid = userJpaEntity.id!!,
             email = userJpaEntity.email,

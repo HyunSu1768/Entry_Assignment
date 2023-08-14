@@ -14,7 +14,7 @@ class FeedMapper(
 
     fun toEntity(feed: Feed): FeedJpaEntity{
 
-        val userJpaEntity = userMapper.toDomain(feed.user)
+        val userJpaEntity = userMapper.toEntity(feed.user)
 
         return FeedJpaEntity(
             id = feed.uuid,
@@ -27,7 +27,7 @@ class FeedMapper(
 
     fun toDomain(feedJpaEntity: FeedJpaEntity): Feed{
 
-        val userEntity = userMapper.toEntity(feedJpaEntity.user)
+        val userEntity = userMapper.toDomain(feedJpaEntity.user)
 
         return Feed(
             uuid = feedJpaEntity.id,
