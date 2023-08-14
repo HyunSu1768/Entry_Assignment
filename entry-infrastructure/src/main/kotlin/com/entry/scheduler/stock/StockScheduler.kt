@@ -14,7 +14,6 @@ class StockScheduler(
      */
     @Scheduled(cron = "0 0/5 * * * ?")
     fun saveOrUpdateStock(){
-
         saveOrUpdateStockUseCase.saveOrUpdate()
     }
 
