@@ -1,6 +1,7 @@
 package com.entry.stock.model
 
 data class Stock (
+
     val id: String?,
 
     val stockName: String,

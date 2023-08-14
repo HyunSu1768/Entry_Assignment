@@ -3,6 +3,7 @@ package com.entry.stock.dto.response
 import com.entry.stock.model.Stock
 
 data class StockResponse (
+
     val id: String?,
 
     val stockName: String,
