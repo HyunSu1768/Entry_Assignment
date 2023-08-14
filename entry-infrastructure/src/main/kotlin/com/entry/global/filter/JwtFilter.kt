@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class JwtFilter(
-    val customUserDetailService: CustomUserDetailService,
-    val jwtResolver: JwtResolver,
-    val jwtAdapter: JwtAdapter
+    private val customUserDetailService: CustomUserDetailService,
+    private val jwtResolver: JwtResolver,
+    private val jwtAdapter: JwtAdapter
 ): OncePerRequestFilter() {
 
     override fun doFilterInternal(
