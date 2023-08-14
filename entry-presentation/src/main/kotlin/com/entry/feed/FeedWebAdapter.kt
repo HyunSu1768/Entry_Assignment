@@ -28,7 +28,8 @@ class FeedWebAdapter(
         saveFeedUseCase.saveFeed(
             FeedRequest(
                 feedWebRequest.title,
-                feedWebRequest.content
+                feedWebRequest.content,
+                feedWebRequest.stockId
             )
         )
     }
