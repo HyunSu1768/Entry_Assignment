@@ -23,7 +23,7 @@ class OAuthSuccessHandler(
     ) {
 
         val user = authentication?.principal as OAuth2User
-        writeTokenResponse(response, generateJwtPort.generateToken(user.attributes.get("email").toString()))
+        writeTokenResponse(response, generateJwtPort.generateToken(user.attributes["email"].toString()))
 
     }
 
