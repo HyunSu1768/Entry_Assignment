@@ -25,6 +25,4 @@ class StockWebAdapter(
 
     @GetMapping("/list")
     fun findAllStock() = loadStockListUseCase.loadStockList()
-
-
 }
