@@ -15,7 +15,7 @@ class AdapterStock(
 ): SaveOrUpdateStockPort {
     override fun saveOrUpdate() {
 
-        val stockList:String = "https://finance.naver.com/sise/sise_market_sum.nhn?&page=1"
+        val stockList = "https://finance.naver.com/sise/sise_market_sum.nhn?&page=1"
         val conn = Jsoup.connect(stockList)
 
         val document = conn.get()
