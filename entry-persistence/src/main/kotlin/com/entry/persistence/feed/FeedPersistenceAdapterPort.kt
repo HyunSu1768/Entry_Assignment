@@ -1,5 +1,6 @@
 package com.entry.persistence.feed
 
+import com.entry.comment.port.out.LoadCommentListByFeedPort
 import com.entry.common.PersistenceAdapter
 import com.entry.common.error.BusinessException
 import com.entry.common.error.ErrorCode
@@ -21,12 +22,16 @@ class FeedPersistenceAdapterPort(
     val feedRepository: FeedRepository,
     val feedMapper: FeedMapper,
     val loadStockPort: LoadStockPort,
-    val stockMapper: StockMapper
+    val stockMapper: StockMapper,
+    val loadCommentListByFeedPort: LoadCommentListByFeedPort
 ): SaveFeedPort, LoadFeedListPort, LoadFeedByUUIDPort, RemoveFeedPort, LoadFeedListByStockPort {
 
     override fun loadFeedList(): MutableList<FeedResponse> {
 
-        return feedRepository.findAll().stream().map { it -> FeedResponse.of(feedMapper.toDomain(it)) }.toList()
+        return feedRepository.findAll().stream().map {
+                it -> FeedResponse.of(feedMapper.toDomain(it),
+                loadCommentListByFeedPort.loadCommentList(feedMapper.toDomain(it)) )
+        }.toList()
     }
 
     override fun loadFeed(uuid: UUID): Feed {
@@ -45,7 +50,10 @@ class FeedPersistenceAdapterPort(
 
         val feedResponseList = feedRepository.findAllByStock(
             stockMapper.toEntity(stock)
-        ).stream().map { it -> FeedResponse.of(feedMapper.toDomain(it)) }.toList()
+        ).stream().map {
+                it -> FeedResponse.of(feedMapper.toDomain(it),
+            loadCommentListByFeedPort.loadCommentList(feedMapper.toDomain(it)) )
+        }.toList()
         return FeedListResponse(feedResponseList)
     }
 }
