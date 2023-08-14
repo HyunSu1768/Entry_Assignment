@@ -9,8 +9,8 @@ import com.entry.stock.port.out.LoadStockListPort
 class LoadStockListService(
     val loadStockListPort: LoadStockListPort
 ): LoadStockLiseUseCase {
+
     override fun loadStockList(): StockListResponse {
         return loadStockListPort.loadStockList()
     }
-
 }
