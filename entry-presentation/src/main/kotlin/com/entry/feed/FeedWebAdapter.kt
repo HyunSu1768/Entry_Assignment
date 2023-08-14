@@ -6,10 +6,7 @@ import com.entry.feed.dto.request.FeedModifyWebRequest
 import com.entry.feed.dto.request.FeedRequest
 import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.dto.response.FeedListResponse
-import com.entry.feed.port.`in`.LoadFeedListUseCase
-import com.entry.feed.port.`in`.ModifyFeedUseCase
-import com.entry.feed.port.`in`.RemoveFeedUseCase
-import com.entry.feed.port.`in`.SaveFeedUseCase
+import com.entry.feed.port.`in`.*
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
 
@@ -20,7 +17,8 @@ class FeedWebAdapter(
     private val saveFeedUseCase: SaveFeedUseCase,
     private val loadFeedListUseCase: LoadFeedListUseCase,
     private val modifyFeedUseCase: ModifyFeedUseCase,
-    private val removeFeedUseCase: RemoveFeedUseCase
+    private val removeFeedUseCase: RemoveFeedUseCase,
+    private val loadFeedListByStockUseCase: LoadFeedListByStockUseCase
 ) {
 
     @PostMapping
@@ -52,6 +50,13 @@ class FeedWebAdapter(
     @DeleteMapping("/{feedId}")
     fun deleteFeed(@PathVariable feedId: UUID){
         removeFeedUseCase.removeFeed(feedId)
+    }
+
+    @GetMapping("/list/{stockId}")
+    fun findFeedListByStock(
+        @PathVariable stockId: String
+    ): FeedListResponse{
+        return loadFeedListByStockUseCase.loadFeedListByStock(stockId)
     }
 
 }
