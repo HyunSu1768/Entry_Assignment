@@ -50,12 +50,12 @@ class FeedPersistenceAdapterPort(
 
     override fun loadFeedListByStock(stock: Stock): FeedListResponse {
 
-        val feedResponseList = feedRepository.findAllByStock(
-            stockMapper.toEntity(stock)
-        ).map { FeedResponse.of(
-                    feedMapper.toDomain(it),
-                    loadCommentListByFeedPort.loadCommentList(feedMapper.toDomain(it))
-                ) }.toList()
+        val feedResponseList = feedRepository.findAllByStock(stockMapper.toEntity(stock)).map {
+            FeedResponse.of(
+                feedMapper.toDomain(it),
+                loadCommentListByFeedPort.loadCommentList(feedMapper.toDomain(it))
+            )
+        }.toList()
         return FeedListResponse(feedResponseList)
     }
 }
