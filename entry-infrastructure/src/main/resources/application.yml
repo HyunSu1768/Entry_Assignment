@@ -22,3 +22,6 @@ jwt:
   refreshExpiredExp: ${JWT_REFRESH_EXP:432000000}
   header: ${JWT_HEADER:Authorization}
   prefix: ${JWT_PREFIX:Bearer}
+
+kafka:
+  serverAddress: localhost:9092
