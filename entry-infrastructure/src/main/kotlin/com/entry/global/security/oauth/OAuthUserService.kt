@@ -33,8 +33,8 @@ class OAuthUserService(
 
         return DefaultOAuth2User(
             setOf(SimpleGrantedAuthority("ROLE_TEST")),
-            attributes!!.attributes,
-            attributes.nameAttributesKey
+            attributes?.attributes,
+            attributes?.nameAttributesKey
         )
     }
 }
