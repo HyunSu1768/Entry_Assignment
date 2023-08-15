@@ -10,8 +10,11 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class SecurityConfig(
@@ -27,9 +30,11 @@ class SecurityConfig(
     protected fun configure(httpSecurity: HttpSecurity): SecurityFilterChain{
         return httpSecurity
             .csrf().disable()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
             .authorizeRequests()
-            .antMatchers("/login/oauth2/code/naver").permitAll()
-            .antMatchers("/login/oauth2/code/kakao").permitAll()
+            .antMatchers("/login/oauth2/*", "/oauth2/authorization/naver", "/oauth2/authorization/kakao","/favicon.ico").permitAll()
             .anyRequest().permitAll()
             .and()
             .oauth2Login()

@@ -24,16 +24,15 @@ class JwtFilter(
         filterChain: FilterChain
     ) {
 
-        val resolveToken = jwtResolver.resolveToken(request)
+            val resolveToken: String? = jwtResolver.resolveToken(request)
 
-        if(resolveToken != null){
-            val accountId = jwtAdapter.getSubjectWithExpiredCheck(resolveToken)
-            val userDetails: UserDetails = customUserDetailService.loadUserByUsername(accountId)
-            val authentication: Authentication =
-                UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
-            SecurityContextHolder.getContext().authentication = authentication
-        }
-
+            if(resolveToken != null){
+                val accountId = jwtAdapter.getSubjectWithExpiredCheck(resolveToken)
+                val userDetails: UserDetails = customUserDetailService.loadUserByUsername(accountId)
+                val authentication: Authentication =
+                    UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
+                SecurityContextHolder.getContext().authentication = authentication
+            }
         filterChain.doFilter(request, response)
 
     }
