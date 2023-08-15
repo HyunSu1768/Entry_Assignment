@@ -29,7 +29,7 @@ class StockPersistenceAdapter(
 
     override fun loadStockList(): StockListResponse {
         val stockResponseList =
-            stockRepository.findAll().stream().map { it -> StockResponse.of(stockMapper.toDomain(it)) }.toList()
+            stockRepository.findAll().map { it -> StockResponse.of(stockMapper.toDomain(it)) }.toList()
 
         return StockListResponse(stockResponseList)
     }

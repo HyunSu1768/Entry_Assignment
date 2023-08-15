@@ -4,5 +4,5 @@ import com.entry.feed.dto.response.FeedResponse
 
 interface LoadFeedListPort {
 
-    fun loadFeedList(): MutableList<FeedResponse>
+    fun loadFeedList(): List<FeedResponse>
 }
