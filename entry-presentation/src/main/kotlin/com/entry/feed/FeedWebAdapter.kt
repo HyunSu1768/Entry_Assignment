@@ -6,6 +6,7 @@ import com.entry.feed.dto.request.FeedModifyWebRequest
 import com.entry.feed.dto.request.FeedRequest
 import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.dto.response.FeedListResponse
+import com.entry.feed.dto.response.FeedResponse
 import com.entry.feed.port.`in`.*
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
@@ -18,8 +19,12 @@ class FeedWebAdapter(
     private val loadFeedListUseCase: LoadFeedListUseCase,
     private val modifyFeedUseCase: ModifyFeedUseCase,
     private val removeFeedUseCase: RemoveFeedUseCase,
-    private val loadFeedListByStockUseCase: LoadFeedListByStockUseCase
+    private val loadFeedListByStockUseCase: LoadFeedListByStockUseCase,
+    private val loadFeedByUUIDUseCase: LoadFeedByUUIDUseCase
 ) {
+
+    @GetMapping("/{feedId}")
+    fun loadFeed(@PathVariable feedId: UUID): FeedResponse = loadFeedByUUIDUseCase.loadFeed(feedId)
 
     @PostMapping
     fun addFeed(@RequestBody feedWebRequest: FeedWebRequest) {
