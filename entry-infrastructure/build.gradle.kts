@@ -18,8 +18,11 @@ dependencies {
     // validation
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
-    //crolling
+    // crawling
     implementation ("org.jsoup:jsoup:1.14.2")
+
+    // kafka
+    implementation ("org.springframework.kafka:spring-kafka")
 
 }
 
