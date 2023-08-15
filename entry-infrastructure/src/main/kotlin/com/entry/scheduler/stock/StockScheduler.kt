@@ -12,7 +12,7 @@ class StockScheduler(
     /*
     5분마다 실행
      */
-    @Scheduled(cron = "0/1 * * * * ?")
+    @Scheduled(cron = "0 0/5 * * * ?")
     fun saveOrUpdateStock(){
         saveOrUpdateStockUseCase.saveOrUpdate()
     }
