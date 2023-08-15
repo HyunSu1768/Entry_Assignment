@@ -5,6 +5,7 @@ import com.entry.persistence.feed.entity.FeedJpaEntity
 import com.entry.persistence.user.entity.UserJpaEntity
 import java.util.UUID
 import javax.persistence.Entity
+import javax.persistence.FetchType
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 
@@ -15,11 +16,11 @@ class CommentJpaEntity(
 
     val content: String,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     val user: UserJpaEntity,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     val feed: FeedJpaEntity
 
