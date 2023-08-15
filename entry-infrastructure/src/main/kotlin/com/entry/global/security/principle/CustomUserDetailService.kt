@@ -11,6 +11,7 @@ class CustomUserDetailService(
 ): UserDetailsService {
 
     override fun loadUserByUsername(username: String?): UserDetails {
-        return findUserPort.findUserByEmail(username)
+        val user = findUserPort.findUserByEmail(username)
+        return CustomUserDetails(user)
     }
 }
