@@ -1,6 +1,6 @@
-package com.entry.auth.service
+package com.entry.global.security.oauth
 
-import com.entry.auth.dto.OAuthAttributes
+import com.entry.global.security.oauth.dto.OAuthAttributes
 import com.entry.user.model.User
 import com.entry.user.port.out.UserSaveOrUpdatePort
 import org.springframework.security.core.authority.SimpleGrantedAuthority

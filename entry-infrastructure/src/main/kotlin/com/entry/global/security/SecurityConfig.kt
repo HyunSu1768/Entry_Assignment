@@ -1,7 +1,7 @@
 package com.entry.global.security
 
-import com.entry.auth.service.OAuthSuccessHandler
-import com.entry.auth.service.OAuthUserService
+import com.entry.global.security.oauth.OAuthSuccessHandler
+import com.entry.global.security.oauth.OAuthUserService
 import com.entry.global.filter.FilterConfig
 import com.entry.global.security.principle.CustomUserDetailService
 import com.entry.global.security.token.JwtAdapter
@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.web.cors.CorsConfiguration
-import org.springframework.web.cors.CorsConfigurationSource
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class SecurityConfig(

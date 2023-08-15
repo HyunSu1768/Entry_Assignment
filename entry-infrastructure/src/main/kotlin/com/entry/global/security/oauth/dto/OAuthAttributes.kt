@@ -1,4 +1,4 @@
-package com.entry.auth.dto
+package com.entry.global.security.oauth.dto
 
 import com.entry.user.model.User
 

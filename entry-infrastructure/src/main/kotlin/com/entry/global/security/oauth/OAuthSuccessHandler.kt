@@ -1,4 +1,4 @@
-package com.entry.auth.service
+package com.entry.global.security.oauth
 
 import com.entry.auth.dto.response.TokenResponse
 import com.entry.auth.port.out.GenerateJwtPort
