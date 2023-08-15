@@ -17,6 +17,7 @@ class GlobalExceptionFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
+
         try {
             filterChain.doFilter(request, response)
         } catch(e: BusinessException){
@@ -30,6 +31,7 @@ class GlobalExceptionFilter(
         response1: Int,
         response2: ErrorResponse
     ){
+
         response.status = response1
         response.contentType = "application.json"
         response.characterEncoding = "UTF-8"

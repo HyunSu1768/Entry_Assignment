@@ -37,6 +37,5 @@ data class User(
 
     override fun isEnabled(): Boolean {
         return true
-
     }
 }

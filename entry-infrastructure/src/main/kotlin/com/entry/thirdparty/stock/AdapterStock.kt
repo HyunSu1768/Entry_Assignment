@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component
 class AdapterStock(
     val saveStockPort: SaveStockPort
 ): SaveOrUpdateStockPort {
+
     override fun saveOrUpdate() {
 
         val stockList = "https://finance.naver.com/sise/sise_market_sum.nhn?&page=1"
@@ -20,10 +21,10 @@ class AdapterStock(
 
         val document = conn.get()
         getStockListAndSave(document)
-
     }
 
     private fun getStockListAndSave(document: Document) {
+
         val stockTableBody: Elements = document.select("table.type_2 tbody tr")
 
         for(element: Element in stockTableBody){

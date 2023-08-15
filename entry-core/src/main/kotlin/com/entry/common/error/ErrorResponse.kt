@@ -37,6 +37,5 @@ data class ErrorResponse(
                 "서버오류"
             )
         }
-
     }
 }

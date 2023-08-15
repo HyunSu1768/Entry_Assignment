@@ -45,5 +45,4 @@ class SecurityConfig(
             .and()
             .build()
     }
-
 }

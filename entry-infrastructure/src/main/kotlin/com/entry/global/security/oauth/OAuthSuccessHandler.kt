@@ -24,10 +24,10 @@ class OAuthSuccessHandler(
 
         val user = authentication?.principal as OAuth2User
         writeTokenResponse(response, generateJwtPort.generateToken(user.attributes["email"].toString()))
-
     }
 
     private fun writeTokenResponse(response: HttpServletResponse?, tokenResponse: TokenResponse){
+
         response?.addHeader("accessToken", tokenResponse.accessToken)
         response!!.contentType = "application/json;charset=UTF-8"
     }

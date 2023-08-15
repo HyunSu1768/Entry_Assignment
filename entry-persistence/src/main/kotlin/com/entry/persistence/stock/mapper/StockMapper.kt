@@ -42,5 +42,4 @@ class StockMapper {
             discussionRoom=stockJpaEntity.discussionRoom
         )
     }
-
 }

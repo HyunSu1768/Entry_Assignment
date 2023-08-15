@@ -15,6 +15,7 @@ class OAuthAttributes(
             socialName: String,
             attributes: MutableMap<String, Any>
         ): OAuthAttributes? {
+
             return when (socialName) {
                 "kakao" -> ofKakao("id", attributes)
                 "naver" -> ofNaver("id", attributes)
@@ -36,7 +37,6 @@ class OAuthAttributes(
                 nameAttributesKey = userNameAttributeName,
                 attributes = attributes
             )
-
         }
 
         fun ofNaver(
@@ -52,11 +52,11 @@ class OAuthAttributes(
                 nameAttributesKey = userNameAttributeName,
                 attributes = response
             )
-
         }
     }
 
     fun toEntity(): User {
+
         return User(
             email = email,
             nickname = name

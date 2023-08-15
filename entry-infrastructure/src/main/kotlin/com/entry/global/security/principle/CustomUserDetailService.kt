@@ -13,5 +13,4 @@ class CustomUserDetailService(
     override fun loadUserByUsername(username: String?): UserDetails {
         return findUserPort.findUserByEmail(username)
     }
-
 }

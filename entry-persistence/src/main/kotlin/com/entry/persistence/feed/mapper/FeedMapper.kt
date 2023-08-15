@@ -37,5 +37,4 @@ class FeedMapper(
             stock = stockMapper.toDomain(feedJpaEntity.stock)
         )
     }
-
 }

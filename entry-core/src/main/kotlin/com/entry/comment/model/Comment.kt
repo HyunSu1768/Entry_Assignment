@@ -14,5 +14,4 @@ class Comment(
     val user: User,
 
     val feed: Feed
-
 )

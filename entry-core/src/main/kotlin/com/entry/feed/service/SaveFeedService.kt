@@ -28,5 +28,4 @@ class SaveFeedService(
 
         saveFeedPort.saveFeed(feed)
     }
-
 }

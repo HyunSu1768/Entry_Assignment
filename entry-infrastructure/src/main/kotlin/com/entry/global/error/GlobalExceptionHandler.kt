@@ -13,6 +13,7 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException::class)
     fun handleBusinessException(e: BusinessException): ResponseEntity<ErrorResponse>{
+
         val errorCode = e.errorCode
         val response: ErrorResponse = ErrorResponse.of(errorCode, errorCode.message)
 
@@ -21,6 +22,7 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception::class)
     fun handleException(e: Exception): ResponseEntity<ErrorResponse>{
+
         val errorCode = ErrorCode.INTERVAL_SERVER_ERROR
         val response = ErrorResponse.of(errorCode, e.message)
 

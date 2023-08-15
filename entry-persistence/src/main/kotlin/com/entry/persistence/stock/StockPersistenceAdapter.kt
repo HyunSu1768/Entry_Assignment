@@ -20,6 +20,7 @@ class StockPersistenceAdapter(
 ): SaveStockPort, LoadStockListPort, LoadStockPort{
 
     override fun saveStock(stock: Stock) {
+
         stockRepository.save(
             stockMapper.toEntity(
                 stock
@@ -28,6 +29,7 @@ class StockPersistenceAdapter(
     }
 
     override fun loadStockList(): StockListResponse {
+
         val stockResponseList =
             stockRepository.findAll().map { StockResponse.of(stockMapper.toDomain(it)) }.toList()
 

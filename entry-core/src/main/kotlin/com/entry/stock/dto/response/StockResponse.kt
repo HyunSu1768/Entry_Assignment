@@ -3,33 +3,19 @@ package com.entry.stock.dto.response
 import com.entry.stock.model.Stock
 
 data class StockResponse (
-
     val id: String?,
-
     val stockName: String,
-
     val currentPrice: String,
-
     val fullDayFee: String,
-
     val fluctuationRate: String,
-
     val faceValue: String,
-
     val marketCap: String,
-
     val listedSharesNumber: String,
-
     val foreignerRatio: String,
-
     val tradingVolume: String,
-
     val per: String,
-
     val roe: String,
-
     val discussionRoom: String
-
 ){
 
     companion object{
@@ -51,5 +37,4 @@ data class StockResponse (
             )
         }
     }
-
 }

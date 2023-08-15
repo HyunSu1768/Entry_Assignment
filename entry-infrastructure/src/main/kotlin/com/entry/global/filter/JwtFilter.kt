@@ -34,6 +34,5 @@ class JwtFilter(
             SecurityContextHolder.getContext().authentication = authentication
         }
         filterChain.doFilter(request, response)
-
     }
 }

@@ -13,8 +13,8 @@ class SecurityAdapter(
 ): LoadCurrentUserPort{
 
     override fun loadCurrentUser(): User {
+
         val userEmail = SecurityContextHolder.getContext().authentication.name
         return userPersistenceAdapter.findUserByEmail(userEmail)
     }
-
 }

@@ -16,5 +16,4 @@ class JwtResolver(
         }
         return null
     }
-
 }

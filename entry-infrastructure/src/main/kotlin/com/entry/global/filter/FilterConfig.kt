@@ -18,10 +18,10 @@ class FilterConfig(
 ): SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity>() {
 
     override fun configure(builder: HttpSecurity) {
+
         val jwtFilter: JwtFilter = JwtFilter(customUserDetailService, jwtResolver, jwtAdapter)
         val globalExceptionFilter: GlobalExceptionFilter = GlobalExceptionFilter(objectMapper)
         builder.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
         builder.addFilterBefore(globalExceptionFilter, JwtFilter::class.java)
     }
-
 }

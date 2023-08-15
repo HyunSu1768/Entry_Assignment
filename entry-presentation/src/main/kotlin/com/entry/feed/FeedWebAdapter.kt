@@ -23,6 +23,7 @@ class FeedWebAdapter(
 
     @PostMapping
     fun addFeed(@RequestBody feedWebRequest: FeedWebRequest) {
+
         saveFeedUseCase.saveFeed(
             FeedRequest(
                 feedWebRequest.title,
@@ -33,9 +34,7 @@ class FeedWebAdapter(
     }
 
     @GetMapping("/list")
-    fun findFeedList(): FeedListResponse{
-        return loadFeedListUseCase.loadFeed()
-    }
+    fun findFeedList(): FeedListResponse = loadFeedListUseCase.loadFeed()
 
     @PutMapping("/{feedId}")
     fun modifyFeed(@PathVariable feedId: UUID, @RequestBody feedModifyWebRequest: FeedModifyWebRequest){
@@ -48,15 +47,10 @@ class FeedWebAdapter(
     }
 
     @DeleteMapping("/{feedId}")
-    fun deleteFeed(@PathVariable feedId: UUID){
-        removeFeedUseCase.removeFeed(feedId)
-    }
+    fun deleteFeed(@PathVariable feedId: UUID) = removeFeedUseCase.removeFeed(feedId)
 
     @GetMapping("/list/{stockId}")
-    fun findFeedListByStock(
-        @PathVariable stockId: String
-    ): FeedListResponse{
-        return loadFeedListByStockUseCase.loadFeedListByStock(stockId)
-    }
+    fun findFeedListByStock(@PathVariable stockId: String): FeedListResponse
+        = loadFeedListByStockUseCase.loadFeedListByStock(stockId)
 
 }

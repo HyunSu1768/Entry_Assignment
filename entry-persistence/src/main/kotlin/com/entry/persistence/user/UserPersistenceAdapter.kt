@@ -18,5 +18,4 @@ class UserPersistenceAdapter(
 
         return userMapper.toDomain(user)
     }
-
 }
