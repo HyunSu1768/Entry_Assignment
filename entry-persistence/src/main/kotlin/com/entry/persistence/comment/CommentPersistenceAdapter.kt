@@ -27,7 +27,7 @@ class CommentPersistenceAdapter(
 
         val commentResponseList = commentRepository.findAllByFeed(
             feedMapper.toEntity(feed)
-        ).map { it -> CommentResponse.of(commentMapper.toDomain(it)) }.toList()
+        ).map { CommentResponse.of(commentMapper.toDomain(it)) }.toList()
 
         return CommentListResponse(
             commentResponseList
