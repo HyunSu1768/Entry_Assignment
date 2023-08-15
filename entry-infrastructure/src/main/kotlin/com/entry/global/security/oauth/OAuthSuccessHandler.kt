@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse
 @Component
 class OAuthSuccessHandler(
     private val generateJwtPort: GenerateJwtPort,
-    private val objectMapper: ObjectMapper
 ): SimpleUrlAuthenticationSuccessHandler() {
 
     override fun onAuthenticationSuccess(
