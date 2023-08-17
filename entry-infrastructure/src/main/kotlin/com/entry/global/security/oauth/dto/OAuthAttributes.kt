@@ -11,11 +11,11 @@ class OAuthAttributes(
 ) {
 
     companion object {
+
         fun of(
             socialName: String,
             attributes: MutableMap<String, Any>
         ): OAuthAttributes? {
-
             return when (socialName) {
                 "kakao" -> ofKakao("id", attributes)
                 "naver" -> ofNaver("id", attributes)
