@@ -2,6 +2,8 @@ package com.entry.persistence.feed
 
 import com.entry.comment.port.out.LoadCommentListByFeedPort
 import com.entry.common.PersistenceAdapter
+import com.entry.common.error.BusinessException
+import com.entry.common.error.ErrorCode
 import com.entry.feed.dto.response.FeedResponse
 import com.entry.feed.model.FeedHistory
 import com.entry.feed.port.out.LoadRecentViewFeedPort
@@ -32,9 +34,13 @@ class FeedHistoryPersistenceAdapter(
             feedHistoryRepository.findAllByUserJpaEntity(
                 userMapper.toEntity(user),
                 Sort.by(Sort.Direction.DESC, "createdAt")
-            )[0]
+            )
 
-        val feed = feedMapper.toDomain(feedHistory.feedJpaEntity)
+        if(feedHistory.isEmpty()){
+            throw BusinessException(ErrorCode.RECENT_FEED_NOT_FOUND)
+        }
+
+        val feed = feedMapper.toDomain(feedHistory[0].feedJpaEntity)
         val commentList = loadCommentListByFeedPort.loadCommentList(feed)
         return FeedResponse.of(feed, commentList)
     }
