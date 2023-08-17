@@ -1,7 +1,6 @@
 package com.entry.persistence.feed.entity
 
-import com.entry.persistence.BaseUUIDEntity
-import com.entry.persistence.stock.entity.StockJpaEntity
+import com.entry.persistence.BaseTimeEntity
 import com.entry.persistence.user.entity.UserJpaEntity
 import java.util.*
 import javax.persistence.Entity
@@ -22,4 +21,4 @@ class FeedHistoryJpaEntity(
     @JoinColumn(name = "feed_id")
     val feedJpaEntity: FeedJpaEntity
 
-): BaseUUIDEntity(id)
+): BaseTimeEntity(id)

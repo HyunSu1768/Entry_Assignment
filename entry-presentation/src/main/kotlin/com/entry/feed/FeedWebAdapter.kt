@@ -20,7 +20,8 @@ class FeedWebAdapter(
     private val modifyFeedUseCase: ModifyFeedUseCase,
     private val removeFeedUseCase: RemoveFeedUseCase,
     private val loadFeedListByStockUseCase: LoadFeedListByStockUseCase,
-    private val loadFeedByUUIDUseCase: LoadFeedByUUIDUseCase
+    private val loadFeedByUUIDUseCase: LoadFeedByUUIDUseCase,
+    private val recentViewFeedUseCase: LoadRecentViewFeedUseCase
 ) {
 
     @GetMapping("/{feedId}")
@@ -57,5 +58,10 @@ class FeedWebAdapter(
     @GetMapping("/list/{stockId}")
     fun findFeedListByStock(@PathVariable stockId: String): FeedListResponse
         = loadFeedListByStockUseCase.loadFeedListByStock(stockId)
+
+    @GetMapping("/recent-viewed-feed")
+    fun recentViewFeed(): FeedResponse{
+        return recentViewFeedUseCase.loadRecentFeed()
+    }
 
 }
