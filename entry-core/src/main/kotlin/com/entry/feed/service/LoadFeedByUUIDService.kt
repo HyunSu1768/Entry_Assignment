@@ -8,13 +8,15 @@ import com.entry.feed.model.Feed
 import com.entry.feed.port.`in`.LoadFeedByUUIDUseCase
 import com.entry.feed.port.out.LoadFeedByUUIDPort
 import com.entry.feed.port.out.LoadFeedEventPort
+import com.entry.user.port.out.LoadCurrentUserPort
 import java.util.*
 
 @UseCase
 class LoadFeedByUUIDService(
     private val loadFeedByUUIDPort: LoadFeedByUUIDPort,
     private val commentListByFeedPort: LoadCommentListByFeedPort,
-    private val loadFeedEventPort: LoadFeedEventPort
+    private val loadFeedEventPort: LoadFeedEventPort,
+    private val loadCurrentUserPort: LoadCurrentUserPort
 ): LoadFeedByUUIDUseCase {
 
     override fun loadFeed(id: UUID): FeedResponse {
@@ -24,7 +26,7 @@ class LoadFeedByUUIDService(
         loadFeedEventPort.send(
             FeedEventRequest(
                 feed,
-                feed.user
+                loadCurrentUserPort.loadCurrentUser()
             )
         )
 
