@@ -18,5 +18,6 @@ enum class ErrorCode(
     RECENT_FEED_NOT_FOUND(404, "최근 읽은 피드를 찾을 수 없습니다."),
 
     // 403 Forbidden
-    WRITER_MISMATCH(403, "작성자만 수정할 수 있습니다.")
+    WRITER_MISMATCH(403, "작성자만 접근할 수 있습니다.")
+
 }
