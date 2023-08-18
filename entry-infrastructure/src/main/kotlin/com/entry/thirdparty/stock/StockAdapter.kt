@@ -10,7 +10,7 @@ import org.jsoup.select.Elements
 import org.springframework.stereotype.Component
 
 @Component
-class AdapterStock(
+class StockAdapter(
     val saveStockPort: SaveStockPort
 ): SaveOrUpdateStockPort {
 
