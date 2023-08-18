@@ -1,7 +1,7 @@
 package com.entry.persistence.auth
 
 import com.entry.user.model.User
-import com.entry.user.port.out.UserSaveOrUpdatePort
+import com.entry.user.port.out.SaveOrUpdateUserPort
 import com.entry.common.PersistenceAdapter
 import com.entry.persistence.user.mapper.UserMapper
 import com.entry.persistence.user.repository.UserRepository
@@ -10,7 +10,7 @@ import com.entry.persistence.user.repository.UserRepository
 class OAuth2PersistenceAdapter(
     val userRepository: UserRepository,
     val userMapper: UserMapper,
-): UserSaveOrUpdatePort {
+): SaveOrUpdateUserPort {
 
     override fun saveOrUpdate(user: User) {
 

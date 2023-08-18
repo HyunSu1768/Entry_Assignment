@@ -3,7 +3,7 @@ package com.entry.user.port.out
 import com.entry.user.model.User
 
 
-interface UserSaveOrUpdatePort {
+interface SaveOrUpdateUserPort {
 
     fun saveOrUpdate(user: User)
 }
