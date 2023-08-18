@@ -9,10 +9,10 @@ import javax.persistence.Entity
 class UserJpaEntity(
     id: UUID?,
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, length = 100)
     val email: String,
 
-    @Column(name = "nickname", nullable = false)
+    @Column(name = "nickname", nullable = false, length = 100)
     val nickname: String
 
 ): BaseUUIDEntity(id)

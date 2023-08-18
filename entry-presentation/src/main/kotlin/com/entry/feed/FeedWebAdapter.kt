@@ -8,6 +8,7 @@ import com.entry.feed.dto.request.FeedWebRequest
 import com.entry.feed.dto.response.FeedListResponse
 import com.entry.feed.dto.response.FeedResponse
 import com.entry.feed.port.`in`.*
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
 
@@ -27,6 +28,7 @@ class FeedWebAdapter(
     @GetMapping("/{feedId}")
     fun loadFeed(@PathVariable feedId: UUID): FeedResponse = loadFeedByUUIDUseCase.loadFeed(feedId)
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun addFeed(@RequestBody feedWebRequest: FeedWebRequest) {
 
@@ -52,6 +54,7 @@ class FeedWebAdapter(
         )
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feedId}")
     fun deleteFeed(@PathVariable feedId: UUID) = removeFeedUseCase.removeFeed(feedId)
 

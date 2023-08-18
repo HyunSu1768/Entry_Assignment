@@ -12,8 +12,10 @@ class FeedJpaEntity(
 
     id: UUID?,
 
+    @Column(name = "title", nullable = false, length = 100)
     val title: String,
 
+    @Column(name = "content", nullable = false)
     val content: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
